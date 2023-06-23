@@ -23,6 +23,11 @@ app.post("/tweets", (req, res) => {
         res.status(401).send("UNAUTHORIZED");
     }
 
+    if (typeof tweet !== "string") {
+        res.status(400).send("O tweet deve ser uma string");
+        return;
+    }
+
     if (!tweet || tweet.trim() === "") {
         res.status(400).send("O tweet não pode estar vazio");
         return;
