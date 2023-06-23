@@ -23,6 +23,11 @@ app.post("/tweets", (req, res) => {
         res.status(401).send("UNAUTHORIZED");
     }
 
+    if (!tweet || tweet.trim() === "") {
+        res.status(400).send("O tweet não pode estar vazio");
+        return;
+    }
+
     const newTweet = { 
         username: username,
         avatar: user.avatar,
